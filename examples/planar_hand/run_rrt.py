@@ -1,3 +1,7 @@
+#%%
+import sys
+sys.path.append("/planning_through_contact")
+
 import numpy as np
 from contact_sampler import PlanarHandContactSampler
 
@@ -40,7 +44,7 @@ rrt_params.h = h
 rrt_params.smoothing_mode = SmoothingMode.k1AnalyticPyramid
 rrt_params.log_barrier_weight_for_bundling = 100
 rrt_params.root_node = IrsNode(q0)
-rrt_params.max_size = 1000
+rrt_params.max_size = 1000 # 1000
 rrt_params.goal = np.copy(q0)
 rrt_params.goal[2] = np.pi
 rrt_params.termination_tolerance = 0.01
@@ -55,8 +59,17 @@ rrt_params.distance_metric = "local_u"
 # params.distance_metric = 'global'  # If using global metric
 rrt_params.global_metric = np.array([0.1, 0.1, 0.1, 0.1, 10.0, 10.0, 1.0])
 
+rrt_params.use_free_solvers = True
+# contact_sampler.sim_params.use_free_solvers = True
+
 prob_rrt = IrsRrtProjection(rrt_params, contact_sampler, q_sim, q_sim_py)
 prob_rrt.iterate()
+
+# (
+#     q_knots_trimmed,
+#     u_knots_trimmed,
+# ) = prob_rrt.get_trimmed_q_and_u_knots_to_goal()
+# q_vis.publish_trajectory(q_knots_trimmed, h=rrt_params.h)
 
 d_batch = prob_rrt.calc_distance_batch(rrt_params.goal)
 print("minimum distance: ", d_batch.min())
@@ -70,3 +83,7 @@ prob_rrt.save_tree(f"planar_hand_tree_{rrt_params.max_size}_{0}.pkl")
 #     data_folder,
 #     "randomized",
 #     f"tree_{params.max_size}_{0}.pkl"))
+
+
+input()
+# %%

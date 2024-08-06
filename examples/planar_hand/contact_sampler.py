@@ -10,8 +10,11 @@ from qsim_cpp import QuasistaticSimulatorCpp
 from qsim.simulator import QuasistaticSimulator
 from irs_rrt.contact_sampler import ContactSampler
 
-from .planar_hand_setup import robot_l_name, robot_r_name, object_name
-
+# from .planar_hand_setup import robot_l_name, robot_r_name, object_name
+# names.
+robot_l_name = "arm_left"
+robot_r_name = "arm_right"
+object_name = "sphere"
 
 class PlanarHandContactSampler(ContactSampler):
     """

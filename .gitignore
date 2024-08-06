@@ -2,7 +2,7 @@
 .idea
 .coverage
 .ipynb_checkpoints
-*.ipynb
+# *.ipynb
 *.pyc
 *.gz
 *.pdf
