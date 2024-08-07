@@ -19,9 +19,8 @@ Our quasidynamic simulator can be found on the `tro2023` branch of the `quasista
 - download the deepnote folder
 - 'cd planning-through-contact-deepnote/planning-through-contact'
 - pull the branch for planning-through-contact 
-    - repo url:
-    - branch name:
-    - `git pull `
+    - fork url `https://github.com/slecleach/planning_through_contact.git`
+    - branch `benchmark`
 
 # build docker image 
 - `cd planning-through-contact-deepnote`
