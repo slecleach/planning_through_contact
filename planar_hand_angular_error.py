@@ -85,3 +85,50 @@ os.makedirs(benchmark_dir, exist_ok=True)
 
 df_minimal_angular_errors.to_csv("benchmark_data/minimal_angular_errors.csv", index=False)
 df_closest_node_angular_errors.to_csv("benchmark_data/closest_node_angular_errors.csv", index=False)
+
+
+
+# #%%
+# from tqdm import tqdm
+
+# def rrt_iterate(rrt, num_iter):
+#     """
+#     Main method for iteration.
+#     """
+#     pbar = tqdm(total=min(num_iter, rrt.max_size))
+
+#     while rrt.size < min(num_iter, rrt.rrt_params.max_size):
+#         pbar.update(1)
+
+#         # 1. Sample a subgoal.
+#         if rrt.cointoss_for_goal():
+#             subgoal = rrt.rrt_params.goal
+#         else:
+#             subgoal = rrt.sample_subgoal()
+
+#         # 2. Sample closest node to subgoal
+#         parent_node = rrt.select_closest_node(subgoal)
+
+#         # 3. Extend to subgoal.
+#         child_node, edge = rrt.extend(parent_node, subgoal)
+
+#         # 4. Attempt to rewire a candidate child node.
+#         if rrt.rrt_params.rewire:
+#             parent_node, child_node, edge = rrt.rewire(
+#                 parent_node, child_node
+#             )
+
+#         # 5. Register the new node to the graph.
+#         rrt.add_node(child_node)
+#         child_node.value = parent_node.value + edge.cost
+#         rrt.add_edge(edge)
+
+#         # 6. Check for termination.
+#         if rrt.is_close_to_goal():
+#             rrt.goal_node_idx = child_node
+#             break
+
+#     pbar.close()
+
+# prob_rrt = IrsRrtProjection(rrt_params, contact_sampler, q_sim, q_sim_py)
+# prob_rrt.iterate()
