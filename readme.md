@@ -29,6 +29,7 @@ Our quasidynamic simulator can be found on the `tro2023` branch of the `quasista
 # run docker 
 - `cd planning-through-contact-deepnote`
 - `docker run -it -v ~/workspace/planning-through-contact-deepnnote:/planning_through_contact crm_image`
+- directly in docker `pip install plotly, pandas`
 
 # run notebook in vscode
 - attach to running container
